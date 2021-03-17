@@ -1,0 +1,18 @@
+.SetFourPlayers {
+    
+  select {
+    width: 200px;
+    margin: 10px 0px;
+  }
+
+  button {
+    width: 200px;
+    margin: 10px 0px;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+}

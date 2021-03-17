@@ -1,0 +1,14 @@
+.RoundTwo {
+
+  .block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .column {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+}

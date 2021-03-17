@@ -1,0 +1,8 @@
+.SinglesHeader {
+  display: flex;
+  
+  h1 {
+    margin: auto;
+    margin-top: 50px;
+  }
+}

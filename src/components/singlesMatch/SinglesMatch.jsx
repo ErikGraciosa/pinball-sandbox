@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './SinglesMatch.css';
 
-function SinglesMatch({ teamA, teamB, turnGreen, backgroundColor }) {
-  console.log(backgroundColor);
+function SinglesMatch({ teamA, teamB, turnGreen, color }) {
+  const completed = color ? styles.green : styles.white;
+
   return (
-    <div>
-      <form onSubmit={turnGreen} className={styles.green}>
+    <div className={styles.SinglesMatch}>
+      <form 
+        onSubmit={turnGreen} 
+        className={completed}>
         <select placeholder="player name">
           <option hidden selected>Select one...</option>
           {teamA.map(player => 
@@ -37,7 +40,7 @@ SinglesMatch.propTypes = {
   teamA: PropTypes.array.isRequired,
   teamB: PropTypes.array.isRequired,
   turnGreen: PropTypes.func.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
+  color: PropTypes.boolean,
 };
 
 export default SinglesMatch;
