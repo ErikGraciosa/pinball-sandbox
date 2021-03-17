@@ -1,0 +1,12 @@
+.GameList {
+
+  select {
+    width: 200px;
+    margin: 10px 10px;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+}

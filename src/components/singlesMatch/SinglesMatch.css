@@ -1,7 +1,9 @@
-.white {
-  background-color: white;
-}
-
-.green {
-  background-color: green;
+.SinglesMatch {
+  .white {
+    background-color: white;
+  }
+  
+  .green {
+    background-color: green;
+  }
 }
