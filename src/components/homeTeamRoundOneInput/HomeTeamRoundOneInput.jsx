@@ -2,20 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './HomeTeamRoundOneInput.css';
 
-function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
+function HomeTeamRoundOneInput({ 
+  team,
+  gameOne,
+  gameTwo,
+  playerOne,
+  playerTwo,
+  playerThree,
+  playerFour,
+  submitHomeLineup
+}) {
   return (
     <div className={styles.HomeTeamRoundOneInput}>
       <p>Round One Home Team Inputs</p>
-      <form>
+      <form onSubmit={submitHomeLineup}>
         <fieldset>
           <legend>Game1</legend>
-          <p>The game picked</p>
+          <p>{gameOne}</p>
           <p>
-            <span>Away P1 G1</span>
-            <span>Away P2 G1</span>
+            <span>{playerOne}</span>
+            <span>{playerTwo}</span>
           </p>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -24,7 +33,7 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
               </option>)}
           </select>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -34,14 +43,14 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
           </select>
         </fieldset>
         <fieldset>
-          <legend>Game2</legend>
-          <p>The game picked</p>
+          <legend>Game 2</legend>
+          <p>{gameTwo}</p>
           <p>
-            <span>Away P3 G2</span>
-            <span>Away P4 G2</span>
+            <span>{playerThree}</span>
+            <span>{playerFour}</span>
           </p>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -50,7 +59,7 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
               </option>)}
           </select>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -68,9 +77,14 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
 
 HomeTeamRoundOneInput.propTypes = {
   team: PropTypes.array.isRequired,
-  turnGreen: PropTypes.func.isRequired,
-  awayEntryComplete: PropTypes.boolean,
+  submitHomeLineup: PropTypes.func.isRequired,
   games: PropTypes.array.isRequired,
+  gameOne: PropTypes.string.isRequired,
+  gameTwo: PropTypes.string.isRequired,
+  playerOne: PropTypes.string.isRequired,
+  playerTwo: PropTypes.string.isRequired,
+  playerThree: PropTypes.string.isRequired,
+  playerFour: PropTypes.string.isRequired,
 };
 
 export default HomeTeamRoundOneInput;
