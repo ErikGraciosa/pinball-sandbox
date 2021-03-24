@@ -1,5 +1,11 @@
 .Toast {
+  animation: slideInFromTop 2s, fadeOut 4s 2s;
+  -webkit-animation: slideInFromTop 2s, fadeOut 4s 2s;
+  position: absolute;
+  width: 370px;
+  opacity: 0;
 
+  
   .green {
     background-color: green;
   }
@@ -7,4 +13,46 @@
   .red {
     background-color: red;
   }
+
+  @keyframes slideInFromTop {
+    0% {
+      opacity: 1;
+      transform: translateY(-100%);
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @-webkit-keyframes slideInFromTop {
+    0% {
+      opacity: 1;
+      transform: translateY(-100%);
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @-webkit-keyframes fadeOut {
+    from {opacity: 1;} 
+    to {opacity: 0;}
+  }
+  
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+
+  
 }

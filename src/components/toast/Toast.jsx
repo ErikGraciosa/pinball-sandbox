@@ -8,7 +8,7 @@ function Toast({ colorStatus, message }) {
 
   return (
     <div className={styles.Toast}>
-      <p className={toastColor}>This is a success toast message</p>
+      <p className={styles.slideInFromLeft}>Toast Message:</p>
       <p className={toastColor}>{message}</p>
     </div>
   );
