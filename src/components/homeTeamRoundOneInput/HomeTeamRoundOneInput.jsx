@@ -15,7 +15,7 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
             <span>Away P2 G1</span>
           </p>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -24,7 +24,7 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
               </option>)}
           </select>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -41,7 +41,7 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
             <span>Away P4 G2</span>
           </p>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -50,7 +50,7 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
               </option>)}
           </select>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -69,7 +69,7 @@ function HomeTeamRoundOneInput({ team, turnGreen, homeEntryComplete }) {
 HomeTeamRoundOneInput.propTypes = {
   team: PropTypes.array.isRequired,
   turnGreen: PropTypes.func.isRequired,
-  awayEntryComplete: PropTypes.boolean,
+  awayEntryComplete: PropTypes.bool,
   games: PropTypes.array.isRequired,
 };
 

@@ -14,7 +14,7 @@ function AwayTeamRoundOneInput({ team, turnGreen, awayEntryComplete, games }) {
         <fieldset>
           <legend>Game 1</legend>
           <select placeholder="game">
-            <option hidden selected>Select game...</option>
+            <option hidden defaultValue>Select game...</option>
             {games.map(game => 
               <option 
                 key={game} 
@@ -24,7 +24,7 @@ function AwayTeamRoundOneInput({ team, turnGreen, awayEntryComplete, games }) {
           </select>
           <br/>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -33,7 +33,7 @@ function AwayTeamRoundOneInput({ team, turnGreen, awayEntryComplete, games }) {
               </option>)}
           </select>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -45,7 +45,7 @@ function AwayTeamRoundOneInput({ team, turnGreen, awayEntryComplete, games }) {
         <fieldset>
           <legend>Game 2</legend>
           <select placeholder="game name">
-            <option hidden selected>Select game...</option>
+            <option hidden defaultValue>Select game...</option>
             {games.map(game => 
               <option 
                 key={game} 
@@ -55,7 +55,7 @@ function AwayTeamRoundOneInput({ team, turnGreen, awayEntryComplete, games }) {
           </select>
           <br/>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -64,7 +64,7 @@ function AwayTeamRoundOneInput({ team, turnGreen, awayEntryComplete, games }) {
               </option>)}
           </select>
           <select placeholder="player name">
-            <option hidden selected>Select player...</option>
+            <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
                 key={player} 
@@ -82,7 +82,7 @@ function AwayTeamRoundOneInput({ team, turnGreen, awayEntryComplete, games }) {
 AwayTeamRoundOneInput.propTypes = {
   team: PropTypes.array.isRequired,
   turnGreen: PropTypes.func.isRequired,
-  awayEntryComplete: PropTypes.boolean,
+  awayEntryComplete: PropTypes.bool,
   games: PropTypes.array.isRequired,
 };
 

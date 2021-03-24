@@ -35,11 +35,6 @@ function RoundOnePickWinners() {
   );
 }
 
-RoundOnePickWinners.propTypes = {
-  team: PropTypes.array.isRequired,
-  turnGreen: PropTypes.func.isRequired,
-  awayEntryComplete: PropTypes.boolean,
-  games: PropTypes.array.isRequired,
-};
+
 
 export default RoundOnePickWinners;
