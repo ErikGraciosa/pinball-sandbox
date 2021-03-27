@@ -14,16 +14,16 @@ function RoundOneFlow() {
   const [awayEntryComplete, setAwayEntryComplete] = useState(false);
   const [colorStatus, setColorStatus] = useState(true);
   const [message, setMessage] = useState('default message');
-  const [gameOne, setGameOne] = useState('Awaiting...');
-  const [gameTwo, setGameTwo] = useState('Awaiting...');
-  const [playerOne, setPlayerOne] = useState('Awaiting...');
-  const [playerTwo, setPlayerTwo] = useState('Awaiting...');
-  const [playerThree, setPlayerThree] = useState('Awaiting...');
-  const [playerFour, setPlayerFour] = useState('Awaiting...');
-  const [playerFive, setPlayerFive] = useState('Awaiting...');
-  const [playerSix, setPlayerSix] = useState('Awaiting...');
-  const [playerSeven, setPlayerSeven] = useState('Awaiting...');
-  const [playerEight, setPlayerEight] = useState('Awaiting...');
+  const [gameOne, setGameOne] = useState('Awaiting... ');
+  const [gameTwo, setGameTwo] = useState('Awaiting... ');
+  const [playerOne, setPlayerOne] = useState('Awaiting... ');
+  const [playerTwo, setPlayerTwo] = useState('Awaiting... ');
+  const [playerThree, setPlayerThree] = useState('Awaiting... ');
+  const [playerFour, setPlayerFour] = useState('Awaiting... ');
+  const [playerFive, setPlayerFive] = useState('Awaiting... ');
+  const [playerSix, setPlayerSix] = useState('Awaiting... ');
+  const [playerSeven, setPlayerSeven] = useState('Awaiting... ');
+  const [playerEight, setPlayerEight] = useState('Awaiting... ');
   
   
   const turnGreen = (event) => {
@@ -44,10 +44,19 @@ function RoundOneFlow() {
     event.preventDefault();
     setShowToast(true);
     setShowResultsInputs(true);
-  }
+  };
+
+  const submitResults = (event) => {
+    event.preventDefault();
+    setColorStatus(false);
+    setMessage('Sorry submit failed, error code: ;D');
+    setShowToast(true);
+    
+  };
 
   const gameOneOnChange = (game) => {
     setGameOne(game);
+    setShowToast(false);
   };
 
   const gameTwoOnChange = (game) => {
@@ -70,6 +79,21 @@ function RoundOneFlow() {
     setPlayerFour(player);
   };
 
+  const playerFiveOnChange = (player) => {
+    setPlayerFive(player);
+  };
+
+  const playerSixOnChange = (player) => {
+    setPlayerSix(player);
+  };
+
+  const playerSevenOnChange = (player) => {
+    setPlayerSeven(player);
+  };
+
+  const playerEightOnChange = (player) => {
+    setPlayerEight(player);
+  };
   return (
     <div className={styles.RoundOneFlow}>
       {showToast
@@ -100,10 +124,25 @@ function RoundOneFlow() {
           playerOne={playerOne}
           playerTwo={playerTwo}
           playerThree={playerThree}
-          playerFour={playerFour}/>
+          playerFour={playerFour}
+          playerFiveOnChange={playerFiveOnChange}
+          playerSixOnChange={playerSixOnChange}
+          playerSevenOnChange={playerSevenOnChange}
+          playerEightOnChange={playerEightOnChange}/>
         : null}
       {showResultsInputs
-        ? <RoundOnePickWinners/>
+        ? <RoundOnePickWinners
+          submitResults={submitResults}
+          playerOne={playerOne}
+          playerTwo={playerTwo}
+          playerThree={playerThree}
+          playerFour={playerFour}
+          playerFive={playerFive}
+          playerSix={playerSix}
+          playerSeven={playerSeven}
+          playerEight={playerEight}
+          gameOne={gameOne}
+          gameTwo={gameTwo}/>
         : null}
     </div>
   );

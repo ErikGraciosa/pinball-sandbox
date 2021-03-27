@@ -1,3 +1,7 @@
 .HomeTeamRoundOneInput {
   padding-top: 20px;
+
+  span {
+    margin: 0px 10px;
+  }
 }

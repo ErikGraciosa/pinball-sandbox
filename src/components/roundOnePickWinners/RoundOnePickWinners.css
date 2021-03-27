@@ -7,4 +7,17 @@
     display: grid;
     grid-template-columns: 50% 50%;
   }
+
+  .chooseWinner:hover {
+    background-color: lightgreen;
+  }
+
+  .chooseWinner:active {
+    background-color: gold;
+  }
+
+  .gold {
+    background-color: gold;
+  }
+
 }

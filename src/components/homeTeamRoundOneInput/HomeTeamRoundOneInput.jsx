@@ -10,6 +10,10 @@ function HomeTeamRoundOneInput({
   playerTwo,
   playerThree,
   playerFour,
+  playerFiveOnChange,
+  playerSixOnChange,
+  playerSevenOnChange,
+  playerEightOnChange,
   submitHomeLineup
 }) {
   return (
@@ -23,7 +27,9 @@ function HomeTeamRoundOneInput({
             <span>{playerOne}</span>
             <span>{playerTwo}</span>
           </p>
-          <select placeholder="player name">
+          <select 
+            placeholder="player name"
+            onChange={(event) => playerFiveOnChange(event.target.value)}>
             <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
@@ -32,7 +38,9 @@ function HomeTeamRoundOneInput({
                 {player}
               </option>)}
           </select>
-          <select placeholder="player name">
+          <select 
+            placeholder="player name"
+            onChange={(event) => playerSixOnChange(event.target.value)}>
             <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
@@ -49,7 +57,9 @@ function HomeTeamRoundOneInput({
             <span>{playerThree}</span>
             <span>{playerFour}</span>
           </p>
-          <select placeholder="player name">
+          <select
+            placeholder="player name"
+            onChange={(event) => playerSevenOnChange(event.target.value)}>
             <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 
@@ -58,7 +68,9 @@ function HomeTeamRoundOneInput({
                 {player}
               </option>)}
           </select>
-          <select placeholder="player name">
+          <select
+            placeholder="player name"
+            onChange={(event) => playerEightOnChange(event.target.value)}>
             <option hidden defaultValue>Select player...</option>
             {team.map(player => 
               <option 

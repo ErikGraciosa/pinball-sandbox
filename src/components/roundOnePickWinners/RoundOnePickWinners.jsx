@@ -2,32 +2,66 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './RoundOnePickWinners.css';
 
-function RoundOnePickWinners() {
+function RoundOnePickWinners({ 
+  submitResults,
+  playerOne,
+  playerTwo,
+  playerThree,
+  playerFour,
+  playerFive,
+  playerSix,
+  playerSeven,
+  playerEight,
+  gameOne,
+  gameTwo
+}) {
+
+  const onClickAddGold = () => {
+
+  };
+
   return (
     <div className={styles.RoundOnePickWinners}>
       <header>Results</header>
-      <form>
-        <header>Pick Winners Game 1 - GAME NAME</header>
+      <form onSubmit={submitResults}>
+        <header>Pick Winners Game 1 - {gameOne}</header>
         <div className={styles.results}>
-          <div>
-            <p>Away Player 1</p>
-            <p>Away Player 2</p>
+          <div className={styles.chooseWinner}>
+            <p>{playerOne}</p>
+            <p>{playerTwo}</p>
           </div>
-          <div>
-            <p>Home Player 1</p>
-            <p>Home Player 2</p>
+          <div className={styles.chooseWinner}>
+            <p>{playerFive}</p>
+            <p>{playerSix}</p>
           </div>
         </div>
-        <header>Pick Winners Game 2 - GAME NAME</header>
+        <header>Pick Winners Game 2 - {gameTwo}</header>
         <div className={styles.results}>
-          <div>
-            <p>Away Player 3</p>
-            <p>Away Player 4</p>
-          </div>
-          <div>
-            <p>Home Player 3</p>
-            <p>Home Player 4</p>
-          </div>
+          <input
+            type="radio"
+            className={styles.chooseWinner}
+            name="game-two"
+            id="away-team-game-two"
+            hidden></input>
+          <label
+            htmlFor="away-team-game-two"
+            className={styles.chooseWinner}>
+            <p>{playerThree}</p>
+            <p>{playerFour}</p>
+          </label>
+          <input
+            type="radio"
+            className={styles.chooseWinner}
+            name="game-two"
+            id="home-team-game-two"
+            hidden></input>
+          <label
+            htmlFor="home-team-game-two"
+            className={styles.chooseWinner}>
+            <p>{playerSeven}</p>
+            <p>{playerEight}</p>
+          </label>
+          
         </div>
         <button>Submit Results</button>
       </form>
