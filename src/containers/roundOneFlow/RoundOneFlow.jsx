@@ -13,9 +13,11 @@ function RoundOneFlow() {
   const [showResultsInputs, setShowResultsInputs] = useState(false);
   const [awayEntryComplete, setAwayEntryComplete] = useState(false);
   const [homeEntryComplete, setHomeEntryComplete] = useState(false);
+  const [disableAwayEntry, setDisableAwayEntry] = useState(false);
+  const [disableHomeEntry, setDisableHomeEntry] = useState(false);
   const [resultsEntryComplete, setResultsEntryComplete] = useState(false);
   const [colorStatus, setColorStatus] = useState(true);
-  const [message, setMessage] = useState('default message');
+  const [message, setMessage] = useState('Entry Complete, play games');
   const [gameOne, setGameOne] = useState('Awaiting... ');
   const [gameTwo, setGameTwo] = useState('Awaiting... ');
   const [playerOne, setPlayerOne] = useState('Awaiting... ');
@@ -81,17 +83,22 @@ function RoundOneFlow() {
     event.preventDefault();
     setShowToast(true);
     setShowHomeInputs(true);
+    setAwayEntryComplete(false);
+    setDisableAwayEntry(true);
   };
 
   const submitHomeLineup = (event) => {
     event.preventDefault();
     setShowToast(true);
     setShowResultsInputs(true);
+    setHomeEntryComplete(false);
+    setDisableHomeEntry(true);
   };
 
   const submitResults = (event) => {
     event.preventDefault();
     setColorStatus(false);
+    //Add disable here on a successful POST request.
     setMessage('Sorry submit failed, error code: ;D');
     setShowToast(true);
   };
@@ -163,7 +170,8 @@ function RoundOneFlow() {
         submitAwayLineup={submitAwayLineup}
         team={teamA}
         awayEntryComplete={awayEntryComplete}
-        games={games}/>
+        games={games}
+        disableAwayEntry={disableAwayEntry}/>
       {showHomeInputs
         ? <HomeTeamRoundOneInput
           submitHomeLineup={submitHomeLineup}
@@ -179,7 +187,8 @@ function RoundOneFlow() {
           playerSixOnChange={playerSixOnChange}
           playerSevenOnChange={playerSevenOnChange}
           playerEightOnChange={playerEightOnChange}
-          homeEntryComplete={homeEntryComplete}/>
+          homeEntryComplete={homeEntryComplete}
+          disableHomeEntry={disableHomeEntry}/>
         : null}
       {showResultsInputs
         ? <RoundOnePickWinners
