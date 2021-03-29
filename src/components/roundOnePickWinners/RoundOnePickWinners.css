@@ -20,4 +20,8 @@
     font-weight: 700;
     background-color: gold;
   }
+
+  .green {
+    border: solid green 3px;
+  }
 }

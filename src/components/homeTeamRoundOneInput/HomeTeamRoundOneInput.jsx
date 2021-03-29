@@ -14,8 +14,10 @@ function HomeTeamRoundOneInput({
   playerSixOnChange,
   playerSevenOnChange,
   playerEightOnChange,
-  submitHomeLineup
+  submitHomeLineup,
+  homeEntryComplete
 }) {
+  const completed = homeEntryComplete ? styles.green : styles.white;
   return (
     <div className={styles.HomeTeamRoundOneInput}>
       <p>Round One Home Team Inputs</p>
@@ -80,8 +82,10 @@ function HomeTeamRoundOneInput({
               </option>)}
           </select>
         </fieldset>
-        <button>Submit Lineup</button>
-
+        {homeEntryComplete
+          ? <button className={completed}>Submit Lineup</button>
+          : <button disabled>Submit Lineup</button>
+        }
       </form>
     </div>
   );

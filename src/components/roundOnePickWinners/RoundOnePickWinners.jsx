@@ -15,8 +15,10 @@ function RoundOnePickWinners({
   gameOne,
   gameTwo,
   gameOneWinnerOnChange,
-  gameTwoWinnerOnChange
+  gameTwoWinnerOnChange,
+  resultsEntryComplete
 }) {
+  const completed = resultsEntryComplete ? styles.green : styles.white;
   return (
     <div className={styles.RoundOnePickWinners}>
       <header>Results - Select Winners</header>
@@ -83,7 +85,10 @@ function RoundOnePickWinners({
             <p>{playerEight}</p>
           </label>
         </div>
-        <button>Submit Results</button>
+        {resultsEntryComplete
+          ? <button className={completed}>Submit Results</button>
+          : <button disabled>Submit Results</button>
+        }
       </form>
     </div>
   );

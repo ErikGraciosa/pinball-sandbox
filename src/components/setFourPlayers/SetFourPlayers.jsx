@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './SetFourPlayers.css';
 
-function SetFourPlayers({ team, turnGreen, color }) {
+function SetFourPlayers({ team, checkValidForm, color }) {
   const completed = color ? styles.green : styles.white;
   
   return (
     <div className={styles.SetFourPlayers}>
       <p>Home / Away Team</p>
       <form 
-        onSubmit={turnGreen} 
+        onSubmit={checkValidForm} 
         className={`${completed}
           ${styles.column}`}>
         <select placeholder="player name">
@@ -56,7 +56,7 @@ function SetFourPlayers({ team, turnGreen, color }) {
 
 SetFourPlayers.propTypes = {
   team: PropTypes.array.isRequired,
-  turnGreen: PropTypes.func.isRequired,
+  checkValidForm: PropTypes.func.isRequired,
   color: PropTypes.boolean,
 };
 

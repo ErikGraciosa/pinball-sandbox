@@ -15,13 +15,12 @@ function AwayTeamRoundOneInput({
   playerFourOnChange
 }) {
   const completed = awayEntryComplete ? styles.green : styles.white;
-
+  const submitted = 'disabled';
   return (
     <div className={styles.AwayTeamRoundOneInput}>
       <p>Round One Away Team Inputs</p>
       <form 
-        onSubmit={submitAwayLineup} 
-        className={completed}>
+        onSubmit={submitAwayLineup}>
         <fieldset>
           <legend>Game 1</legend>
           <select
@@ -96,7 +95,10 @@ function AwayTeamRoundOneInput({
               </option>)}
           </select>
         </fieldset>
-        <button>Submit Lineup</button>
+        {awayEntryComplete
+          ? <button className={completed}>Submit Lineup</button>
+          : <button disabled>Submit Lineup</button>
+        }
       </form>
     </div>
   );
