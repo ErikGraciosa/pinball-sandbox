@@ -2,34 +2,93 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './RoundOnePickWinners.css';
 
-function RoundOnePickWinners() {
+function RoundOnePickWinners({ 
+  submitResults,
+  playerOne,
+  playerTwo,
+  playerThree,
+  playerFour,
+  playerFive,
+  playerSix,
+  playerSeven,
+  playerEight,
+  gameOne,
+  gameTwo,
+  gameOneWinnerOnChange,
+  gameTwoWinnerOnChange,
+  resultsEntryComplete
+}) {
+  const completed = resultsEntryComplete ? styles.green : styles.white;
   return (
     <div className={styles.RoundOnePickWinners}>
-      <header>Results</header>
-      <form>
-        <header>Pick Winners Game 1 - GAME NAME</header>
+      <header>Results - Select Winners</header>
+      <form onSubmit={submitResults}>
+        <header>Pick Winners Game 1 - {gameOne}</header>
         <div className={styles.results}>
-          <div>
-            <p>Away Player 1</p>
-            <p>Away Player 2</p>
-          </div>
-          <div>
-            <p>Home Player 1</p>
-            <p>Home Player 2</p>
-          </div>
+          <input
+            onChange={(event) => gameOneWinnerOnChange(event.target.value)}
+            type="radio"
+            className={styles.chooseWinner}
+            name="game-one"
+            id="away-team-game-one"
+            value="Away"
+            hidden/>
+          <label
+            htmlFor="away-team-game-one"
+            className={styles.chooseWinner}>
+            <p>{playerOne}</p>
+            <p>{playerTwo}</p>
+          </label>
+          <input
+            onChange={(event) => gameOneWinnerOnChange(event.target.value)}
+            type="radio"
+            className={styles.chooseWinner}
+            name="game-one"
+            id="home-team-game-one"
+            value="Home"
+            hidden/>
+          <label
+            htmlFor="home-team-game-one"
+            className={styles.chooseWinner}>
+            <p>{playerFive}</p>
+            <p>{playerSix}</p>
+          </label>
         </div>
-        <header>Pick Winners Game 2 - GAME NAME</header>
+        <header>Pick Winners Game 2 - {gameTwo}</header>
         <div className={styles.results}>
-          <div>
-            <p>Away Player 3</p>
-            <p>Away Player 4</p>
-          </div>
-          <div>
-            <p>Home Player 3</p>
-            <p>Home Player 4</p>
-          </div>
+          <input
+            onChange={(event) => gameTwoWinnerOnChange(event.target.value)}
+            type="radio"
+            className={styles.chooseWinner}
+            name="game-two"
+            id="away-team-game-two"
+            value="Away"
+            hidden/>
+          <label
+            htmlFor="away-team-game-two"
+            className={styles.chooseWinner}>
+            <p>{playerThree}</p>
+            <p>{playerFour}</p>
+          </label>
+          <input
+            onChange={(event) => gameTwoWinnerOnChange(event.target.value)}
+            type="radio"
+            className={styles.chooseWinner}
+            name="game-two"
+            id="home-team-game-two"
+            value="Home"
+            hidden/>
+          <label
+            htmlFor="home-team-game-two"
+            className={styles.chooseWinner}>
+            <p>{playerSeven}</p>
+            <p>{playerEight}</p>
+          </label>
         </div>
-        <button>Submit Results</button>
+        {resultsEntryComplete
+          ? <button className={completed}>Submit Results</button>
+          : <button disabled>Submit Results</button>
+        }
       </form>
     </div>
   );

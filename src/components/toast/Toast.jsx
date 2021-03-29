@@ -4,7 +4,7 @@ import styles from './Toast.css';
 
 function Toast({ colorStatus, message }) {
   
-  const toastColor = colorStatus ? styles.green : styles.white;
+  const toastColor = colorStatus ? styles.green : styles.red;
 
   return (
     <div className={styles.Toast}>

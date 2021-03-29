@@ -1,7 +1,7 @@
 .AwayTeamRoundOneInput {
   padding-top: 20px;
-
+  
   .green {
-    background-color: green;
+    border: solid green 3px;
   }
 }

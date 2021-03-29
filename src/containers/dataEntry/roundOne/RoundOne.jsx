@@ -8,7 +8,7 @@ import styles from './RoundOne.css';
 function RoundOne() {
   const [color, setColor] = useState(false);
     
-  const turnGreen = (event) => {
+  const checkValidForm = (event) => {
     event.preventDefault();
     setColor(!color);
   };
@@ -18,13 +18,13 @@ function RoundOne() {
       <div className={styles.block}>
         <SetFourPlayers
           team={teamA}
-          turnGreen={turnGreen} 
+          checkValidForm={checkValidForm} 
           color={color}/>
         <GameList
           games={games}/>
         <SetFourPlayers
           team={teamB}
-          turnGreen={turnGreen}
+          checkValidForm={checkValidForm}
           color={color} />
         <div className={styles.column}>  
           <ResultsInputs/>

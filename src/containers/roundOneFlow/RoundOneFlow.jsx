@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AwayTeamRoundOneInput from '../../components/awayTeamRoundOneInput/AwayTeamRoundOneInput';
 import HomeTeamRoundOneInput from '../../components/homeTeamRoundOneInput/HomeTeamRoundOneInput';
 import RoundOnePickWinners from '../../components/roundOnePickWinners/RoundOnePickWinners';
@@ -12,64 +12,147 @@ function RoundOneFlow() {
   const [showHomeInputs, setShowHomeInputs] = useState(false);
   const [showResultsInputs, setShowResultsInputs] = useState(false);
   const [awayEntryComplete, setAwayEntryComplete] = useState(false);
+  const [homeEntryComplete, setHomeEntryComplete] = useState(false);
+  const [disableAwayEntry, setDisableAwayEntry] = useState(false);
+  const [disableHomeEntry, setDisableHomeEntry] = useState(false);
+  const [resultsEntryComplete, setResultsEntryComplete] = useState(false);
   const [colorStatus, setColorStatus] = useState(true);
-  const [message, setMessage] = useState('default message');
-  const [gameOne, setGameOne] = useState('Awaiting...');
-  const [gameTwo, setGameTwo] = useState('Awaiting...');
-  const [playerOne, setPlayerOne] = useState('Awaiting...');
-  const [playerTwo, setPlayerTwo] = useState('Awaiting...');
-  const [playerThree, setPlayerThree] = useState('Awaiting...');
-  const [playerFour, setPlayerFour] = useState('Awaiting...');
-  const [playerFive, setPlayerFive] = useState('Awaiting...');
-  const [playerSix, setPlayerSix] = useState('Awaiting...');
-  const [playerSeven, setPlayerSeven] = useState('Awaiting...');
-  const [playerEight, setPlayerEight] = useState('Awaiting...');
+  const [message, setMessage] = useState('Entry Complete, play games');
+  const [gameOne, setGameOne] = useState('Awaiting... ');
+  const [gameTwo, setGameTwo] = useState('Awaiting... ');
+  const [playerOne, setPlayerOne] = useState('Awaiting... ');
+  const [playerTwo, setPlayerTwo] = useState('Awaiting... ');
+  const [playerThree, setPlayerThree] = useState('Awaiting... ');
+  const [playerFour, setPlayerFour] = useState('Awaiting... ');
+  const [playerFive, setPlayerFive] = useState('Awaiting... ');
+  const [playerSix, setPlayerSix] = useState('Awaiting... ');
+  const [playerSeven, setPlayerSeven] = useState('Awaiting... ');
+  const [playerEight, setPlayerEight] = useState('Awaiting... ');
+  const [gameOneWinner, setGameOneWinner] = useState('NA');
+  const [gameTwoWinner, setGameTwoWinner] = useState('NA');
   
-  
-  const turnGreen = (event) => {
-    event.preventDefault();
-    setAwayEntryComplete(!awayEntryComplete);
+  const checkAwayValidForm = () => {
+    if(gameOne != 'Awaiting... ' &&
+      gameTwo != 'Awaiting... ' &&
+      playerOne != 'Awaiting... ' &&
+      playerTwo != 'Awaiting... ' &&
+      playerThree != 'Awaiting... ' &&
+      playerFour != 'Awaiting... ') {
+      setAwayEntryComplete(true);
+    }
     //Whenever submit button gets clicked trigger toast to happen
     //Toast will be red or green depending on if successful POST to database.
   };
 
+  useEffect(() => {
+    checkAwayValidForm();
+  }, [gameOne,
+    gameTwo,
+    playerOne,
+    playerTwo,
+    playerThree,
+    playerFour]);
+
+  const checkHomeValidForm = () => {
+    if(playerFive != 'Awaiting... ' &&
+      playerSix != 'Awaiting... ' &&
+      playerSeven != 'Awaiting... ' &&
+      playerEight != 'Awaiting... ') {
+      setHomeEntryComplete(true);
+    }
+  };
+
+  useEffect(() => {
+    checkHomeValidForm();
+  }, [playerFive,
+    playerSix,
+    playerSeven,
+    playerEight]);
+
+  const checkResultsValidForm = () => {
+    if(gameOneWinner != 'NA' && gameTwoWinner != 'NA') {
+      setResultsEntryComplete(true);
+    }
+  };
+
+  useEffect(() => {
+    checkResultsValidForm();
+  }, [gameOneWinner, gameTwoWinner]);
+
   const submitAwayLineup = (event) => {
     event.preventDefault();
-    console.log('submitaway clicked');
     setShowToast(true);
     setShowHomeInputs(true);
+    setAwayEntryComplete(false);
+    setDisableAwayEntry(true);
   };
 
   const submitHomeLineup = (event) => {
     event.preventDefault();
     setShowToast(true);
     setShowResultsInputs(true);
-  }
-
-  const gameOneOnChange = (game) => {
-    setGameOne(game);
+    setHomeEntryComplete(false);
+    setDisableHomeEntry(true);
   };
 
-  const gameTwoOnChange = (game) => {
-    setGameTwo(game);
+  const submitResults = (event) => {
+    event.preventDefault();
+    setColorStatus(false);
+    //Add disable here on a successful POST request.
+    setMessage('Sorry submit failed, error code: ;D');
+    setShowToast(true);
   };
 
-  const playerOneOnChange = (player) => {
-    setPlayerOne(player);
+  const gameOneOnChange = async(game) => {
+    await setGameOne(game);
   };
 
-  const playerTwoOnChange = (player) => {
-    setPlayerTwo(player);
+  const gameTwoOnChange = async(game) => {
+    await setGameTwo(game);
   };
 
-  const playerThreeOnChange = (player) => {
-    setPlayerThree(player);
+  const playerOneOnChange = async(player) => {
+    await setPlayerOne(player);
   };
 
-  const playerFourOnChange = (player) => {
-    setPlayerFour(player);
+  const playerTwoOnChange = async(player) => {
+    await setPlayerTwo(player);
   };
 
+  const playerThreeOnChange = async(player) => {
+    await setPlayerThree(player);
+  };
+
+  const playerFourOnChange = async(player) => {
+    await setPlayerFour(player);
+  };
+
+  const playerFiveOnChange = (player) => {
+    setPlayerFive(player);
+    setShowToast(false);
+  };
+  
+  const playerSixOnChange = (player) => {
+    setPlayerSix(player);
+  };
+  
+  const playerSevenOnChange = (player) => {
+    setPlayerSeven(player);
+  };
+  
+  const playerEightOnChange = (player) => {
+    setPlayerEight(player);
+  };
+  
+  const gameOneWinnerOnChange = (winner) => {
+    setShowToast(false);
+    setGameOneWinner(winner);
+  };
+
+  const gameTwoWinnerOnChange = (winner) => {
+    setGameTwoWinner(winner);
+  };
+  
   return (
     <div className={styles.RoundOneFlow}>
       {showToast
@@ -86,12 +169,11 @@ function RoundOneFlow() {
         playerFourOnChange={playerFourOnChange}
         submitAwayLineup={submitAwayLineup}
         team={teamA}
-        turnGreen={turnGreen}
         awayEntryComplete={awayEntryComplete}
-        games={games}/>
+        games={games}
+        disableAwayEntry={disableAwayEntry}/>
       {showHomeInputs
         ? <HomeTeamRoundOneInput
-          turnGreen={turnGreen}
           submitHomeLineup={submitHomeLineup}
           team={teamB}
           games={games}
@@ -100,10 +182,30 @@ function RoundOneFlow() {
           playerOne={playerOne}
           playerTwo={playerTwo}
           playerThree={playerThree}
-          playerFour={playerFour}/>
+          playerFour={playerFour}
+          playerFiveOnChange={playerFiveOnChange}
+          playerSixOnChange={playerSixOnChange}
+          playerSevenOnChange={playerSevenOnChange}
+          playerEightOnChange={playerEightOnChange}
+          homeEntryComplete={homeEntryComplete}
+          disableHomeEntry={disableHomeEntry}/>
         : null}
       {showResultsInputs
-        ? <RoundOnePickWinners/>
+        ? <RoundOnePickWinners
+          submitResults={submitResults}
+          playerOne={playerOne}
+          playerTwo={playerTwo}
+          playerThree={playerThree}
+          playerFour={playerFour}
+          playerFive={playerFive}
+          playerSix={playerSix}
+          playerSeven={playerSeven}
+          playerEight={playerEight}
+          gameOne={gameOne}
+          gameTwo={gameTwo}
+          gameOneWinnerOnChange={gameOneWinnerOnChange}
+          gameTwoWinnerOnChange={gameTwoWinnerOnChange}
+          resultsEntryComplete={resultsEntryComplete}/>
         : null}
     </div>
   );
