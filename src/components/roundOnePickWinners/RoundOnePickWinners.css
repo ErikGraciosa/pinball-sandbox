@@ -16,8 +16,8 @@
     background-color: gold;
   }
 
-  .gold {
+  input:checked + label {
+    font-weight: 700;
     background-color: gold;
   }
-
 }
