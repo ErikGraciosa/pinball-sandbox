@@ -24,7 +24,8 @@ function RoundOneFlow() {
   const [playerSix, setPlayerSix] = useState('Awaiting... ');
   const [playerSeven, setPlayerSeven] = useState('Awaiting... ');
   const [playerEight, setPlayerEight] = useState('Awaiting... ');
-  
+  const [gameOneWinner, setGameOneWinner] = useState('NA');
+  const [gameTwoWinner, setGameTwoWinner] = useState('NA');
   
   const turnGreen = (event) => {
     event.preventDefault();
@@ -35,7 +36,6 @@ function RoundOneFlow() {
 
   const submitAwayLineup = (event) => {
     event.preventDefault();
-    console.log('submitaway clicked');
     setShowToast(true);
     setShowHomeInputs(true);
   };
@@ -51,12 +51,10 @@ function RoundOneFlow() {
     setColorStatus(false);
     setMessage('Sorry submit failed, error code: ;D');
     setShowToast(true);
-    
   };
 
   const gameOneOnChange = (game) => {
     setGameOne(game);
-    setShowToast(false);
   };
 
   const gameTwoOnChange = (game) => {
@@ -81,6 +79,7 @@ function RoundOneFlow() {
 
   const playerFiveOnChange = (player) => {
     setPlayerFive(player);
+    setShowToast(false);
   };
 
   const playerSixOnChange = (player) => {
@@ -94,6 +93,15 @@ function RoundOneFlow() {
   const playerEightOnChange = (player) => {
     setPlayerEight(player);
   };
+
+  const gameOneWinnerOnChange = (winner) => {
+    setGameOneWinner(winner);
+  };
+
+  const gameTwoWinnerOnChange = (winner) => {
+    setGameTwoWinner(winner);
+  };
+  console.log(gameTwoWinner, gameOneWinner);
   return (
     <div className={styles.RoundOneFlow}>
       {showToast
@@ -142,7 +150,9 @@ function RoundOneFlow() {
           playerSeven={playerSeven}
           playerEight={playerEight}
           gameOne={gameOne}
-          gameTwo={gameTwo}/>
+          gameTwo={gameTwo}
+          gameOneWinnerOnChange={gameOneWinnerOnChange}
+          gameTwoWinnerOnChange={gameTwoWinnerOnChange}/>
         : null}
     </div>
   );

@@ -13,24 +13,23 @@ function RoundOnePickWinners({
   playerSeven,
   playerEight,
   gameOne,
-  gameTwo
+  gameTwo,
+  gameOneWinnerOnChange,
+  gameTwoWinnerOnChange
 }) {
-
-  const onClickAddGold = () => {
-
-  };
-
   return (
     <div className={styles.RoundOnePickWinners}>
-      <header>Results</header>
+      <header>Results - Select Winners</header>
       <form onSubmit={submitResults}>
         <header>Pick Winners Game 1 - {gameOne}</header>
         <div className={styles.results}>
           <input
+            onChange={(event) => gameOneWinnerOnChange(event.target.value)}
             type="radio"
             className={styles.chooseWinner}
             name="game-one"
             id="away-team-game-one"
+            value="Away"
             hidden/>
           <label
             htmlFor="away-team-game-one"
@@ -39,10 +38,12 @@ function RoundOnePickWinners({
             <p>{playerTwo}</p>
           </label>
           <input
+            onChange={(event) => gameOneWinnerOnChange(event.target.value)}
             type="radio"
             className={styles.chooseWinner}
             name="game-one"
             id="home-team-game-one"
+            value="Home"
             hidden/>
           <label
             htmlFor="home-team-game-one"
@@ -54,10 +55,12 @@ function RoundOnePickWinners({
         <header>Pick Winners Game 2 - {gameTwo}</header>
         <div className={styles.results}>
           <input
+            onChange={(event) => gameTwoWinnerOnChange(event.target.value)}
             type="radio"
             className={styles.chooseWinner}
             name="game-two"
             id="away-team-game-two"
+            value="Away"
             hidden/>
           <label
             htmlFor="away-team-game-two"
@@ -66,10 +69,12 @@ function RoundOnePickWinners({
             <p>{playerFour}</p>
           </label>
           <input
+            onChange={(event) => gameTwoWinnerOnChange(event.target.value)}
             type="radio"
             className={styles.chooseWinner}
             name="game-two"
             id="home-team-game-two"
+            value="Home"
             hidden/>
           <label
             htmlFor="home-team-game-two"
