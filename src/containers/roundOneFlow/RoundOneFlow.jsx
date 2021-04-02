@@ -17,7 +17,7 @@ function RoundOneFlow() {
   const [disableHomeEntry, setDisableHomeEntry] = useState(false);
   const [resultsEntryComplete, setResultsEntryComplete] = useState(false);
   const [colorStatus, setColorStatus] = useState(true);
-  const [message, setMessage] = useState('Entry Complete, play games');
+  const [message, setMessage] = useState('Default Message');
   const [gameOne, setGameOne] = useState('Awaiting... ');
   const [gameTwo, setGameTwo] = useState('Awaiting... ');
   const [playerOne, setPlayerOne] = useState('Awaiting... ');
@@ -103,32 +103,34 @@ function RoundOneFlow() {
     setShowToast(true);
   };
 
-  const gameOneOnChange = async(game) => {
-    await setGameOne(game);
+  const gameOneOnChange = (game) => {
+    setMessage('Entry Complete, await Away Team selections.');
+    setGameOne(game);
   };
 
-  const gameTwoOnChange = async(game) => {
-    await setGameTwo(game);
+  const gameTwoOnChange = (game) => {
+    setGameTwo(game);
   };
 
-  const playerOneOnChange = async(player) => {
-    await setPlayerOne(player);
+  const playerOneOnChange = (player) => {
+    setPlayerOne(player);
   };
 
-  const playerTwoOnChange = async(player) => {
-    await setPlayerTwo(player);
+  const playerTwoOnChange = (player) => {
+    setPlayerTwo(player);
   };
 
-  const playerThreeOnChange = async(player) => {
-    await setPlayerThree(player);
+  const playerThreeOnChange = (player) => {
+    setPlayerThree(player);
   };
 
-  const playerFourOnChange = async(player) => {
-    await setPlayerFour(player);
+  const playerFourOnChange = (player) => {
+    setPlayerFour(player);
   };
 
   const playerFiveOnChange = (player) => {
     setPlayerFive(player);
+    setMessage('Entry Complete, play games');
     setShowToast(false);
   };
   
